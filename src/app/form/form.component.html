@@ -1,0 +1,55 @@
+
+<form #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)">
+
+  <div class="form-group">
+
+    <! -- Firstname and Lastname -->
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6 ">
+        <label for="Firstname">Firstname:</label>
+        <input type="text" class="form-control" name="Firstname" #firstname="ngModel" id="Firstname" pattern="[A-Za-z]*" [(ngModel)]="Firstname"  maxlength="30" required >
+          <div  class="alert alert-danger" *ngIf="firstname.dirty && firstname.invalid">
+            <span *ngIf="firstname.errors.required">Please fill the Firstname</span>
+            <span *ngIf="firstname.errors.pattern">Please use characters</span>
+          </div>
+      </div>
+
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <label for="Lastname">Lastname:</label>
+        <input type="text" class="form-control" #lastname ="ngModel" id="Lastname"  pattern="[A-Za-z]*" [(ngModel)]="Lastname" name="Lastname"  maxlength="30" required>
+        <div  class="alert alert-danger" *ngIf="lastname.dirty && lastname.invalid">
+            <span *ngIf="lastname.errors.required">Please fill the Lastname</span>
+            <span *ngIf="lastname.errors.pattern">Please use characters</span>
+
+          </div>
+      </div>
+    </div>
+    <br>
+
+    <! --Email and Date of Birth -->
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <label for="Email">Email:</label>
+        <input type="text" class="form-control" #email= "ngModel" pattern="[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*" id="Email" name="Email" [(ngModel)]="Email" required>
+        <div  class="alert alert-danger" *ngIf="email.dirty && email.invalid">
+            <span *ngIf="email.errors.required">Please fill the Email</span>
+            <span *ngIf="email.errors.pattern">Please enter a valid Email</span>
+          </div>
+      </div>
+
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <label for="DBO">DBO:</label>
+        <input type="date" class="form-control" #date="ngModel" id="DBO" name="DBO" [(ngModel)]="DBO" required>
+        <div  class="alert alert-danger" *ngIf="date.dirty && date.invalid">
+            <span *ngIf="date.errors.required">Please fill the date</span>
+          </div>
+      </div>
+    </div>
+    <br>
+
+    <! -- Submit Button -->
+    <div class="form-group">
+      <button class="btn btn-primary" type="submit" [disabled]="!userForm.valid" >Submit</button>
+    </div>
+  </div>
+</form>
