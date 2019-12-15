@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Basic Form';
+  
+  constructor(){
+    console.log("welcome to test");
+  }
 }
